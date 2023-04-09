@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class Segment {
 
     private int x;
@@ -8,5 +10,14 @@ public class Segment {
         this.x = x;
         this.y = y;
         this.head = head;
+    }
+
+    public void draw(Graphics g) {
+        if (head) {
+            g.setColor(Color.orange);
+        } else {
+            g.setColor(Color.green);
+        }
+        g.fillRect(x, y, 20, 20);
     }
 }
