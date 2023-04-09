@@ -7,6 +7,7 @@ public class Game {
         JFrame frame = new JFrame();
         JPanel gamePanel = new JPanel();
         gamePanel.setPreferredSize(new Dimension(720, 720));
+        gamePanel.setLayout(new BorderLayout());
         gamePanel.setBackground(Color.black);
         gamePanel.add(snake);
 
