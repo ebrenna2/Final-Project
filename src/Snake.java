@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Snake extends JComponent {
@@ -9,6 +10,7 @@ public class Snake extends JComponent {
     Snake() {
         body = new ArrayList<>();
         score = 0;
+        addSegment();
     }
 
     public void addSegment() {
@@ -16,4 +18,9 @@ public class Snake extends JComponent {
         body.add(segment);
     }
 
+    public void paintComponent(Graphics g) {
+        for (Segment segment: body) {
+            segment.draw(g);
+        }
+    }
 }
