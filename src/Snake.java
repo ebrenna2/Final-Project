@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Snake extends JComponent {
 
-    ArrayList<Segment> body;
-    int score;
+    private ArrayList<Segment> body;
+    private int score;
 
     Snake() {
         body = new ArrayList<>();
