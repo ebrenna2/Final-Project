@@ -14,7 +14,7 @@ public class Snake extends JComponent {
     }
 
     public void addSegment() {
-        Segment segment = new Segment(360, 360, true);
+        Segment segment = new Segment(360, 360, true, Direction.DOWN);
         body.add(segment);
     }
 
