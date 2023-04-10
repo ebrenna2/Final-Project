@@ -22,4 +22,21 @@ public class Segment {
         }
         g.fillRect(x, y, 20, 20);
     }
+
+    public void move() {
+        switch (dir) {
+            case LEFT:
+                x -= 20;
+                break;
+            case RIGHT:
+                x += 20;
+                break;
+            case UP:
+                y -= 20;
+                break;
+            case DOWN:
+                y += 20;
+                break;
+        }
+    }
 }
