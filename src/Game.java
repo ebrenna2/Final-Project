@@ -12,6 +12,8 @@ public class Game {
         gamePanel.setLayout(new BorderLayout());
         gamePanel.setBackground(Color.black);
         gamePanel.add(snake);
+        gamePanel.addKeyListener(snake);
+        gamePanel.setFocusable(true);
 
         frame.add(gamePanel);
         frame.pack();
