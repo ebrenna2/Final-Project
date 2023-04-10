@@ -43,7 +43,15 @@ public class Snake extends JComponent implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            body.get(0).setDir(Direction.RIGHT);
+        } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            body.get(0).setDir(Direction.LEFT);
+        } else if (e.getKeyCode() == KeyEvent.VK_UP) {
+            body.get(0).setDir(Direction.UP);
+        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+            body.get(0).setDir(Direction.DOWN);
+        }
     }
 
     @Override
