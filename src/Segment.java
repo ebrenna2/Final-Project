@@ -39,4 +39,8 @@ public class Segment {
                 break;
         }
     }
+
+    public void setDir(Direction d) {
+        dir = d;
+    }
 }
