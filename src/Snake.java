@@ -24,6 +24,9 @@ public class Snake extends JComponent implements KeyListener {
         for (Segment segment: body) {
             segment.draw(g);
         }
+        for (Segment segment: body) {
+            segment.move();
+        }
     }
 
     @Override
