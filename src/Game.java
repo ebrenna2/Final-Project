@@ -16,9 +16,6 @@ public class Game {
         frame.add(gamePanel);
         frame.pack();
         frame.setVisible(true);
-        while (!lose) {
-            gamePanel.revalidate();
-            gamePanel.repaint();
-        }
+
     }
 }
