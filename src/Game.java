@@ -19,5 +19,14 @@ public class Game {
         frame.pack();
         frame.setVisible(true);
 
+        while (!lose) {
+            gamePanel.revalidate();
+            gamePanel.repaint();
+            try {
+                Thread.sleep(150);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 }

@@ -27,13 +27,6 @@ public class Snake extends JComponent implements KeyListener {
         for (Segment segment: body) {
             segment.move();
         }
-        revalidate();
-        repaint();
-        try {
-            Thread.sleep(150);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     @Override
