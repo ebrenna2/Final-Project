@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Game {
+
+    private static boolean lose = false;
     public static void main(String[] args) {
         Snake snake = new Snake();
         JFrame frame = new JFrame();
@@ -14,5 +16,9 @@ public class Game {
         frame.add(gamePanel);
         frame.pack();
         frame.setVisible(true);
+        while (!lose) {
+            gamePanel.revalidate();
+            gamePanel.repaint();
+        }
     }
 }
