@@ -15,11 +15,14 @@ public class Snake extends JComponent implements KeyListener {
         addSegment();
     }
 
+    // adds a new Segment object to body ArrayList
+    // currently only adds head segment
     public void addSegment() {
         Segment segment = new Segment(360, 360, true, Direction.DOWN);
         body.add(segment);
     }
 
+    // draws and moves each segment in the body ArrayList
     public void paintComponent(Graphics g) {
         for (Segment segment: body) {
             segment.draw(g);
@@ -34,6 +37,7 @@ public class Snake extends JComponent implements KeyListener {
 
     }
 
+    // Changes direction of head segment based on arrow key presses
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {

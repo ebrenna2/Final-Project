@@ -14,6 +14,7 @@ public class Segment {
         this.dir = dir;
     }
 
+    // draws the segment on the screen at the x and y coordinates
     public void draw(Graphics g) {
         if (head) {
             g.setColor(Color.orange);
@@ -23,6 +24,7 @@ public class Segment {
         g.fillRect(x, y, 20, 20);
     }
 
+    // updates x or y coordinates based on the direction of the Segment
     public void move() {
         switch (dir) {
             case LEFT:
@@ -40,6 +42,7 @@ public class Segment {
         }
     }
 
+    // changes direction of Segment object
     public void setDir(Direction d) {
         dir = d;
     }
