@@ -29,6 +29,11 @@ public class Snake extends JComponent implements KeyListener {
         }
         revalidate();
         repaint();
+        try {
+            Thread.sleep(150);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
