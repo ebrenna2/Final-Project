@@ -30,6 +30,7 @@ public class Segment {
                 y += 20;
                 break;
         }
+        if (x<0||y<0) return true;
         if (Game.grid.get(this.y/20).get(this.x/20)==State.WALL||
                 Game.grid.get(this.y/20).get(this.x/20)==State.BODY) {
             return true;

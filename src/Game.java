@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Game {
 
-    private static boolean lose = false;
+    public static boolean lose = false;
     static int gridSize=36;
     static ArrayList<ArrayList<State>> grid=createGrid(gridSize);
     public static void main(String[] args) {
@@ -27,6 +27,7 @@ public class Game {
                 throw new RuntimeException(e);
             }
         }
+        frame.dispose();
     }
 
     public static ArrayList<ArrayList<State>> createGrid(int gridSize) {

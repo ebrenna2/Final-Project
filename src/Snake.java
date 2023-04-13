@@ -38,6 +38,7 @@ public class Snake extends JComponent implements KeyListener {
             if (!segment.move()) {
                 segment.move();
             } else {
+                Game.lose=true;
                 break; //this happens if the Snake crashes
             }
         }
