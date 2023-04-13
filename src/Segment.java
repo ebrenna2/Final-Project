@@ -1,4 +1,3 @@
-import java.awt.*;
 
 public class Segment {
 
@@ -12,16 +11,6 @@ public class Segment {
         this.y = y;
         this.head = head;
         this.dir = dir;
-    }
-
-    // draws the segment on the screen at the x and y coordinates
-    public void draw(Graphics g) {
-        if (head) {
-            g.setColor(Color.orange);
-        } else {
-            g.setColor(Color.green);
-        }
-        g.fillRect(x, y, 20, 20);
     }
 
     // updates x or y coordinates based on the direction of the Segment
@@ -42,8 +31,19 @@ public class Segment {
         }
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
     // changes direction of Segment object
     public void setDir(Direction d) {
         dir = d;
+    }
+    public boolean isHead() {
+        return head;
     }
 }
