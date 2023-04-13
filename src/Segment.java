@@ -1,6 +1,3 @@
-package src;
-
-import java.awt.*;
 
 public class Segment {
 
@@ -16,18 +13,8 @@ public class Segment {
         this.dir = dir;
     }
 
-    // draws the segment on the screen at the x and y coordinates
-    public void draw(Graphics g) {
-        if (head) {
-            g.setColor(Color.orange);
-        } else {
-            g.setColor(Color.green);
-        }
-        g.fillRect(x, y, 20, 20);
-    }
-
     // updates x or y coordinates based on the direction of the Segment
-    public boolean move() {
+    public void move() {
         switch (dir) {
             case LEFT:
                 x -= 20;
@@ -42,16 +29,21 @@ public class Segment {
                 y += 20;
                 break;
         }
-        if (Game.grid.get(this.y/20).get(this.x/20)==State.WALL||
-                Game.grid.get(this.y/20).get(this.x/20)==State.BODY) {
-            return true;
-        } else return false;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 
     // changes direction of Segment object
     public void setDir(Direction d) {
         dir = d;
     }
-
-    public Direction getDir() { return this.dir; }
+    public boolean isHead() {
+        return head;
+    }
 }
