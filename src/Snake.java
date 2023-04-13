@@ -23,9 +23,14 @@ public class Snake extends JComponent implements KeyListener {
     }
 
     // draws and moves each segment in the body ArrayList
-    public void paintComponent(Graphics g) {
+    public void draw(Graphics g) {
         for (Segment segment: body) {
-            segment.draw(g);
+            if (segment.isHead()) {
+                g.setColor(Color.orange);
+            } else {
+                g.setColor(Color.green);
+            }
+            g.fillRect(segment.getX(), segment.getY(), 20, 20);
         }
         for (Segment segment: body) {
             segment.move();
