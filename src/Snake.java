@@ -1,3 +1,5 @@
+package src;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -28,7 +30,11 @@ public class Snake extends JComponent implements KeyListener {
             segment.draw(g);
         }
         for (Segment segment: body) {
-            segment.move();
+            if (!segment.move()) {
+                segment.move();
+            } else {
+                break; //this happens if the Snake crashes
+            }
         }
     }
 
@@ -40,15 +46,18 @@ public class Snake extends JComponent implements KeyListener {
     // Changes direction of head segment based on arrow key presses
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            body.get(0).setDir(Direction.RIGHT);
-        } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            body.get(0).setDir(Direction.LEFT);
-        } else if (e.getKeyCode() == KeyEvent.VK_UP) {
-            body.get(0).setDir(Direction.UP);
-        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            body.get(0).setDir(Direction.DOWN);
-        }
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT)
+            if(body.get(0).getDir()!=Direction.LEFT)
+                body.get(0).setDir(Direction.RIGHT);
+        if (e.getKeyCode() == KeyEvent.VK_LEFT)
+            if(body.get(0).getDir()!=Direction.RIGHT)
+                body.get(0).setDir(Direction.LEFT);
+        if (e.getKeyCode() == KeyEvent.VK_UP)
+            if(body.get(0).getDir()!=Direction.DOWN)
+                body.get(0).setDir(Direction.UP);
+        if (e.getKeyCode() == KeyEvent.VK_DOWN)
+            if(body.get(0).getDir()!=Direction.UP)
+                body.get(0).setDir(Direction.DOWN);
     }
 
     @Override
