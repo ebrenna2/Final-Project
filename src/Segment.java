@@ -1,3 +1,4 @@
+package src;
 
 public class Segment {
 
@@ -14,7 +15,7 @@ public class Segment {
     }
 
     // updates x or y coordinates based on the direction of the Segment
-    public void move() {
+    public boolean move() {
         switch (dir) {
             case LEFT:
                 x -= 20;
@@ -29,6 +30,10 @@ public class Segment {
                 y += 20;
                 break;
         }
+        if (Game.grid.get(this.y/20).get(this.x/20)==State.WALL||
+                Game.grid.get(this.y/20).get(this.x/20)==State.BODY) {
+            return true;
+        } else return false;
     }
 
     public int getX() {
@@ -46,4 +51,5 @@ public class Segment {
     public boolean isHead() {
         return head;
     }
+    public Direction getDir() { return this.dir; }
 }
