@@ -1,27 +1,21 @@
 import javax.swing.*;
-import java.awt.*;
 
 public class Game {
 
     private static boolean lose = false;
     public static void main(String[] args) {
-        Snake snake = new Snake();
         JFrame frame = new JFrame();
-        JPanel gamePanel = new JPanel();
-        gamePanel.setPreferredSize(new Dimension(720, 720));
-        gamePanel.setLayout(new BorderLayout());
-        gamePanel.setBackground(Color.black);
-        gamePanel.add(snake);
-        gamePanel.addKeyListener(snake);
-        gamePanel.setFocusable(true);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        gameBoard board = new gameBoard();
+        frame.getContentPane().add(board);
+        frame.setSize(720, 720);
 
-        frame.add(gamePanel);
         frame.pack();
         frame.setVisible(true);
 
         while (!lose) {
-            gamePanel.revalidate();
-            gamePanel.repaint();
+            board.revalidate();
+            board.repaint();
             try {
                 Thread.sleep(150);
             } catch (InterruptedException e) {
