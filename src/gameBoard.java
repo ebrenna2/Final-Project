@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class gameBoard extends JPanel {
 
     private Snake snake;
-    private static int gridSize=36;
-    static ArrayList<ArrayList<State>> grid=createGrid(gridSize);
+    private int gridSize=36;
+    private ArrayList<ArrayList<State>> grid=createGrid(gridSize);
 
     gameBoard() {
         snake = new Snake();
