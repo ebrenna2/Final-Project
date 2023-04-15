@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class Game {
 
-    static boolean lose = false;
+    private static boolean lose = false;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame();
