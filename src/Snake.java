@@ -24,6 +24,12 @@ public class Snake extends JComponent implements KeyListener {
         body.add(segment);
     }
 
+    public void move() {
+        for (Segment segment: body) {
+            segment.move();
+        }
+    }
+
     // draws and moves each segment in the body ArrayList
     public void draw(Graphics g) {
         for (Segment segment: body) {
@@ -34,14 +40,10 @@ public class Snake extends JComponent implements KeyListener {
             }
             g.fillRect(segment.getX(), segment.getY(), 20, 20);
         }
-        for (Segment segment: body) {
-            if (!segment.move()) {
-                segment.move();
-            } else {
-                Game.lose=true;
-                break; //this happens if the Snake crashes
-            }
-        }
+    }
+
+    public ArrayList<Segment> getBody() {
+        return body;
     }
 
     @Override
