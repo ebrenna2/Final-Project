@@ -23,24 +23,23 @@ public class Snake extends JComponent implements KeyListener {
     }
 
     public void addSegment() {
-        Direction in=this.body.get(this.body.size()-1).getDir();
-        int newX=this.body.get(this.body.size()-1).getX();
-        int newY=this.body.get(this.body.size()-1).getY();
+        Direction in=body.get(this.body.size()-1).getDir();
+        int newX=body.get(this.body.size()-1).getX();
+        int newY=body.get(this.body.size()-1).getY();
         if (in==Direction.UP)
-            newY=newY-20;
-        else if (in==Direction.DOWN)
             newY=newY+20;
+        else if (in==Direction.DOWN)
+            newY=newY-20;
         else if (in==Direction.LEFT)
             newX=newX+20;
         else
             newX=newX-20;
-        Segment segment = new Segment(newY, newX, true, in);
+        Segment segment = new Segment(newY, newX, false, in);
         body.add(segment);
     }
 
     public void move() {
         Direction inh=body.get(0).getDir();
-        body.get(0).move();
         if (body.size()>1) {
             for (int i=0;i<body.size();i++) {
                 body.get(i).move();
