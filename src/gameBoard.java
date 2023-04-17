@@ -23,12 +23,27 @@ public class gameBoard extends JPanel {
     }
 
     public boolean checkLoseCondition() {
+        boolean lose = false;
         Segment head = snake.getBody().get(0);
+
+        // checks collision between head and body segments or wall
+        for (int i = 1; i < snake.getBody().size(); i++) {
+            Segment segment = snake.getBody().get(i);
+            if (head.getX() == segment.getX() && head.getY() == segment.getY()) {
+                lose = true;
+            }
+        }
+        if (head.getX() < 0 || head.getX() > 710 || head.getY() < 0 || head.getY() > 710) {
+            lose = true;
+        }
+        return lose;
+
+        /*System.out.println(grid.get(head.getY()/20).get(head.getX()/20));
         if (head.getX() < 0 || head.getY() < 0) return true;
         if (grid.get(head.getY()/20).get(head.getX()/20)== State.WALL||
                 grid.get(head.getY()/20).get(head.getX()/20)==State.BODY) {
             return true;
-        } else return false;
+        } else return false;*/
     }
 
     public static ArrayList<ArrayList<State>> createGrid(int gridSize) {
