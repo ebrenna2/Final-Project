@@ -14,19 +14,40 @@ public class Snake extends JComponent implements KeyListener {
     Snake() {
         body = new ArrayList<>();
         score = 0;
-        addSegment();
+        addHead();
     }
 
-    // adds a new Segment object to body ArrayList
-    // currently only adds head segment
-    public void addSegment() {
+    public void addHead() {
         Segment segment = new Segment(360, 360, true, Direction.DOWN);
         body.add(segment);
     }
 
+    public void addSegment() {
+        Direction in=this.body.get(this.body.size()-1).getDir();
+        int newX=this.body.get(this.body.size()-1).getX();
+        int newY=this.body.get(this.body.size()-1).getY();
+        if (in==Direction.UP)
+            newY=newY-20;
+        else if (in==Direction.DOWN)
+            newY=newY+20;
+        else if (in==Direction.LEFT)
+            newX=newX+20;
+        else
+            newX=newX-20;
+        Segment segment = new Segment(newY, newX, true, in);
+        body.add(segment);
+    }
+
     public void move() {
-        for (Segment segment: body) {
-            segment.move();
+        Direction inh=body.get(0).getDir();
+        body.get(0).move();
+        if (body.size()>1) {
+            for (int i=0;i<body.size();i++) {
+                body.get(i).move();
+                Direction temp=body.get(i).getDir();
+                body.get(i).setDir(inh);
+                inh=temp;
+            }
         }
     }
 
