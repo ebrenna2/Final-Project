@@ -40,13 +40,11 @@ public class Snake extends JComponent implements KeyListener {
 
     public void move() {
         Direction inh=body.get(0).getDir();
-        if (body.size()>1) {
-            for (int i=0;i<body.size();i++) {
-                body.get(i).move();
-                Direction temp=body.get(i).getDir();
-                body.get(i).setDir(inh);
-                inh=temp;
-            }
+        for (int i=0;i<body.size();i++) {
+            body.get(i).move();
+            Direction temp=body.get(i).getDir();
+            body.get(i).setDir(inh);
+            inh=temp;
         }
     }
 
