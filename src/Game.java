@@ -1,4 +1,4 @@
-package src;
+
 
 import javax.swing.*;
 
@@ -27,6 +27,7 @@ public class Game {
                 throw new RuntimeException(e);
             }
         }
-        frame.dispose();
+        ScoreLogGui gui = new ScoreLogGui(new ScoreLog());
+        gui.setVisible(true);
     }
 }
