@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class ScoreLog {
     private final List<Entry> entries;
-    private static final String LOGFILE = "leaderboard_log.txt";
+    private static final String LOGFILE = "scorelog.txt";
 
     public ScoreLog() {
         entries = new ArrayList<>();
@@ -16,7 +16,7 @@ public class ScoreLog {
     public void addEntry(String name, int score) {
         Entry entry = new Entry(name, score);
         entries.add(entry);
-        Collections.sort(entries, Collections.reverseOrder());
+        entries.sort(Collections.reverseOrder());
 
         // Log the entry to file
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(LOGFILE, true))) {
@@ -34,7 +34,9 @@ public class ScoreLog {
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
-        while (fIn.hasNext()) {
+        while (true) {
+            assert fIn != null;
+            if (!fIn.hasNext()) break;
             String line = fIn.nextLine();
             String[] splitLine = line.split(" ");
             String name = splitLine[0];
@@ -42,7 +44,7 @@ public class ScoreLog {
             Entry entry = new Entry(name, score);
             entries.add(entry);
         }
-        Collections.sort(entries, Collections.reverseOrder());
+        entries.sort(Collections.reverseOrder());
     }
 
     public List<Entry> getEntries() {
