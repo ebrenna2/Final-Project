@@ -8,6 +8,9 @@ public class gameBoard extends JPanel {
     private int gridSize=36;
     private ArrayList<ArrayList<State>> grid=createGrid(gridSize);
 
+    private int score = 0;
+    private JLabel scoreLabel;
+
     gameBoard() {
         snake = new Snake();
         setBackground(Color.black);
@@ -16,6 +19,12 @@ public class gameBoard extends JPanel {
         add(snake);
         addKeyListener(snake);
         setFocusable(true);
+
+        scoreLabel = new JLabel("Score: " + score);
+        scoreLabel.setForeground(Color.RED);
+        scoreLabel.setFont(new Font("Arial", Font.BOLD, 30));
+        scoreLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+        add(scoreLabel, BorderLayout.NORTH);
     }
 
     public void move() {
