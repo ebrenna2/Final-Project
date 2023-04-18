@@ -9,6 +9,7 @@ public class ScoreLogGui extends JFrame {
 
     public ScoreLogGui (ScoreLog leaderboard) {
         this.leaderboard = leaderboard;
+        leaderboard.readEntries();
 
         setTitle("Score Log");
         setSize(new Dimension(400, 400));
