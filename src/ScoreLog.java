@@ -1,4 +1,7 @@
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -24,25 +27,6 @@ public class ScoreLog {
         } catch (IOException e) {
             System.out.println("Error writing to log file: " + e.getMessage());
         }
-    }
-
-    // reads the entries from the leaderboard_log.txt file
-    public void readEntries() {
-        Scanner fIn = null;
-        try {
-            fIn = new Scanner(new FileInputStream("leaderboard_log.txt")) ;
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found");
-        }
-        while (fIn.hasNext()) {
-            String line = fIn.nextLine();
-            String[] splitLine = line.split(" ");
-            String name = splitLine[0];
-            int score = Integer.parseInt(splitLine[1]);
-            Entry entry = new Entry(name, score);
-            entries.add(entry);
-        }
-        Collections.sort(entries, Collections.reverseOrder());
     }
 
     public List<Entry> getEntries() {
