@@ -22,6 +22,7 @@ public class Game {
             board.revalidate();
             board.repaint();
             board.move();
+            board.eat();
             lose = board.checkLoseCondition();
             try {
                 Thread.sleep(150);

@@ -34,18 +34,26 @@ public class gameBoard extends JPanel {
 
         cookie = new Food();
         cookiePos = 40;
-
     }
 
     public void move() {
         snake.move();
     }
 
+    public void eat() {
+        if (snake.getBody().get(0).getX() == cookiePos && snake.getBody().get(0).getY() == cookiePos) {
+            score++;
+            snake.addSegment();
+            cookiePos = randomCookieCords();
+        }
+    }
+
+
     public boolean checkFoodCondition() {
         boolean foodEaten = false;
             for (int i = 1; i < snake.getBody().size(); i++) {
                 Segment segment = snake.getBody().get(i);
-                if ((cookiePos) == segment.getX() && (cookiePos) != segment.getY()) {
+                if ((cookiePos) == segment.getX() && (cookiePos) == segment.getY()) {
                     foodEaten = true;
                 }
             }
