@@ -129,6 +129,6 @@ public class gameBoard extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         snake.draw(g);
-        cookie.paintCookie(g, cookiePosX, cookiePosY);
+        cookie.paintCookie(g, cookiePosX, cookiePosY); // paint cookie
     }
 }
