@@ -8,11 +8,13 @@ public class ScoreLogGui extends JFrame {
     private final ScoreLog leaderboard;
     private final JTextField nameField;
     private final JTextArea leaderboardArea;
+    private final int score;
 
 
-    public ScoreLogGui (ScoreLog leaderboard) {
+    public ScoreLogGui (ScoreLog leaderboard, int score) {
         this.leaderboard = leaderboard;
         //leaderboard.readEntries();
+        this.score = score;
         setTitle("Score Log");
         setSize(new Dimension(400, 400));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -55,8 +57,7 @@ public class ScoreLogGui extends JFrame {
                         JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            gameBoard board = new gameBoard();
-            int score = board.getScore();
+
             leaderboard.addEntry(name, score);
             updateLeaderboard();
             nameField.setText("");
@@ -81,9 +82,9 @@ public class ScoreLogGui extends JFrame {
         leaderboardArea.setText(sb.toString());
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         ScoreLog namesandScores = new ScoreLog();
         ScoreLogGui gui = new ScoreLogGui(namesandScores);
         gui.setVisible(true);
-    }
+    }*/
 }

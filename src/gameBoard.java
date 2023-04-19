@@ -31,6 +31,10 @@ public class gameBoard extends JPanel {
         cookiePosY = 40;
     }
 
+    public int getScore() {
+        return score;
+    }
+
     public void move() {
         snake.move();
     }

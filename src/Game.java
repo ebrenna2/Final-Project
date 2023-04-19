@@ -30,7 +30,7 @@ public class Game {
                 throw new RuntimeException(e);
             }
         }
-        ScoreLogGui gui = new ScoreLogGui(new ScoreLog());
+        ScoreLogGui gui = new ScoreLogGui(new ScoreLog(), board.getScore());
         gui.setVisible(true);
 
     }
