@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-//reminder to add a button for retrying the game
+//this class is used to create the leaderboard gui, so it can be viewed by the player
 public class ScoreLogGui extends JFrame {
     private final ScoreLog leaderboard;
     private final JTextField nameField;
@@ -12,6 +12,7 @@ public class ScoreLogGui extends JFrame {
     private boolean scoring = true;
 
 
+    //constructor for the gui and how it will look/operates/how all the buttons work
     public ScoreLogGui (ScoreLog leaderboard, int score) {
         this.leaderboard = leaderboard;
         //leaderboard.readEntries();
@@ -60,6 +61,7 @@ public class ScoreLogGui extends JFrame {
 
         updateLeaderboard();
 
+        //action listeners for the buttons
         enterButton.addActionListener(e -> {
             String name = nameField.getText().trim();
             if (name.isEmpty()) {
@@ -84,10 +86,13 @@ public class ScoreLogGui extends JFrame {
         exitButton.addActionListener(e -> System.exit(0));
     }
 
+    //method that checks if the player is done scoring
     public boolean isDone() {
         return scoring;
     }
 
+
+    //method that updates the leaderboard
     private void updateLeaderboard() {
         List<ScoreLog.Entry> entries = leaderboard.getEntries();
         StringBuilder sb = new StringBuilder();
