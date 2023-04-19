@@ -11,7 +11,6 @@ public class gameBoard extends JPanel {
     private ArrayList<ArrayList<State>> grid=createGrid(gridSize);
 
     private int score = 0;
-    private JLabel scoreLabel;
 
     private Food cookie;
 
@@ -26,12 +25,6 @@ public class gameBoard extends JPanel {
         add(snake);
         addKeyListener(snake);
         setFocusable(true);
-
-        scoreLabel = new JLabel("Score: " + score);
-        scoreLabel.setForeground(Color.RED);
-        scoreLabel.setFont(new Font("Arial", Font.BOLD, 30));
-        scoreLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-        add(scoreLabel, BorderLayout.NORTH);
 
         cookie = new Food();
         cookiePosX = 40;
@@ -48,7 +41,6 @@ public class gameBoard extends JPanel {
             snake.addSegment();
             cookiePosX = randomCookieCords();
             cookiePosY = randomCookieCords();
-
         }
     }
 
@@ -97,13 +89,6 @@ public class gameBoard extends JPanel {
             lose = true;
         }
         return lose;
-
-        /*System.out.println(grid.get(head.getY()/20).get(head.getX()/20));
-        if (head.getX() < 0 || head.getY() < 0) return true;
-        if (grid.get(head.getY()/20).get(head.getX()/20)== State.WALL||
-                grid.get(head.getY()/20).get(head.getX()/20)==State.BODY) {
-            return true;
-        } else return false;*/
     }
 
     public static ArrayList<ArrayList<State>> createGrid(int gridSize) {
@@ -130,5 +115,8 @@ public class gameBoard extends JPanel {
         super.paintComponent(g);
         snake.draw(g);
         cookie.paintCookie(g, cookiePosX, cookiePosY); // paint cookie
+        g.setColor(Color.red);
+        g.setFont(new Font("Arial", Font.BOLD, 30));
+        g.drawString("Score: " + score, 560, 30);
     }
 }
