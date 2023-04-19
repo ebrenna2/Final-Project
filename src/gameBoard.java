@@ -21,7 +21,7 @@ public class gameBoard extends JPanel {
     gameBoard() {
         snake = new Snake();
         setBackground(Color.black);
-        setPreferredSize(new Dimension(720, 720));
+        setPreferredSize(new Dimension(500, 500));
         setLayout(new BorderLayout());
         add(snake);
         addKeyListener(snake);
@@ -67,7 +67,7 @@ public class gameBoard extends JPanel {
         boolean overlap = true;
 
         while (overlap) {
-            randPos = random.nextInt(0, 36);
+            randPos = random.nextInt(0, 25);
             for (int i = 1; i < snake.getBody().size(); i++) {
                 Segment segment = snake.getBody().get(i);
                 if ((randPos*20) != segment.getX() && (randPos*20) != segment.getY()) {
@@ -90,7 +90,7 @@ public class gameBoard extends JPanel {
                 lose = true;
             }
         }
-        if (head.getX() < 0 || head.getX() > 710 || head.getY() < 0 || head.getY() > 710) {
+        if (head.getX() < 0 || head.getX() > 500 || head.getY() < 0 || head.getY() > 500) {
             lose = true;
         }
         return lose;
@@ -122,7 +122,7 @@ public class gameBoard extends JPanel {
         snake.draw(g);
         cookie.paintCookie(g, cookiePosX, cookiePosY); // paint cookie
         g.setColor(Color.red);
-        g.setFont(new Font("Arial", Font.BOLD, 30));
-        g.drawString("Score: " + score, 560, 30);
+        g.setFont(new Font("Arial", Font.BOLD, 18));
+        g.drawString("Score: " + score, 400, 25);
     }
 }
