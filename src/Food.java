@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class Food {
-    public void paintCookie(Graphics g, int x, int y) {
+    public void paintCookie(Graphics g, int x, int y ) {
         g.setColor(new Color(173, 93, 41)); // set color of cookie
         g.fillOval(x, y, 20, 20); // draw cookie shape
         g.setColor(new Color(120, 63, 4)); // set color of chocolate chips
