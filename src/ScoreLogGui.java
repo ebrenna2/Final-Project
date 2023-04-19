@@ -21,7 +21,18 @@ public class ScoreLogGui extends JFrame {
         leaderboard.readEntries();
         JPanel mainPanel = new JPanel(new BorderLayout());
 
-        JOptionPane.showMessageDialog(null, "You scored " + this.score + " points! Enter your name (one word, no spaces) to add your score to the leaderboard.");
+        String plurality = "";
+        if (this.score == 1)
+        {
+            plurality = " point!";
+        }
+
+        else
+        {
+            plurality = " points!";
+        }
+
+        JOptionPane.showMessageDialog(null, "You scored " + this.score + plurality + " Your name (one word, no spaces) to add your score to the leaderboard.");
         JPanel inputPanel = new JPanel(new FlowLayout());
         JLabel nameLabel = new JLabel("Name:");
         nameField = new JTextField(20);
