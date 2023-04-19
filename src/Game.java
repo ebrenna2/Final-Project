@@ -32,5 +32,6 @@ public class Game {
         }
         ScoreLogGui gui = new ScoreLogGui(new ScoreLog());
         gui.setVisible(true);
+
     }
 }

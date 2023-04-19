@@ -15,7 +15,8 @@ public class gameBoard extends JPanel {
 
     private Food cookie;
 
-    private int cookiePos;
+    private int cookiePosX;
+    private int cookiePosY;
 
     gameBoard() {
         snake = new Snake();
@@ -33,7 +34,8 @@ public class gameBoard extends JPanel {
         add(scoreLabel, BorderLayout.NORTH);
 
         cookie = new Food();
-        cookiePos = 40;
+        cookiePosX = 40;
+        cookiePosY = 40;
     }
 
     public void move() {
@@ -41,10 +43,12 @@ public class gameBoard extends JPanel {
     }
 
     public void eat() {
-        if (snake.getBody().get(0).getX() == cookiePos && snake.getBody().get(0).getY() == cookiePos) {
+        if (snake.getBody().get(0).getX() == cookiePosX && snake.getBody().get(0).getY() == cookiePosY) {
             score++;
             snake.addSegment();
-            cookiePos = randomCookieCords();
+            cookiePosX = randomCookieCords();
+            cookiePosY = randomCookieCords();
+
         }
     }
 
@@ -53,7 +57,7 @@ public class gameBoard extends JPanel {
         boolean foodEaten = false;
             for (int i = 1; i < snake.getBody().size(); i++) {
                 Segment segment = snake.getBody().get(i);
-                if ((cookiePos) == segment.getX() && (cookiePos) == segment.getY()) {
+                if ((cookiePosX) == segment.getX() && (cookiePosY) == segment.getY()) {
                     foodEaten = true;
                 }
             }
@@ -125,6 +129,6 @@ public class gameBoard extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         snake.draw(g);
-        cookie.paintCookie(g, cookiePos);
+        cookie.paintCookie(g, cookiePosX, cookiePosY);
     }
 }
