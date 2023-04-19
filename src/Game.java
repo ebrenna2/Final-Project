@@ -13,8 +13,7 @@ public class Game {
 
     }
 
-    public void run ()
-    {
+    public void run () {
         JFrame frame = new JFrame("Snake");
         JOptionPane.showMessageDialog(null, "Welcome to Snake! Use the arrow keys to move the snake. Eat the food to grow longer. Don't hit the walls or yourself!", "Welcome", JOptionPane.INFORMATION_MESSAGE);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -37,6 +36,15 @@ public class Game {
                 throw new RuntimeException(e);
             }
         }
+
+        if (lose) {
+            JOptionPane.showMessageDialog(null, "You lose! Your score was " + board.getScore() + ".", "Game Over", JOptionPane.INFORMATION_MESSAGE);
+            showScoreLogGui();
+        }
+    }
+
+    public void showScoreLogGui() {
+        gameBoard board = new gameBoard();
         ScoreLogGui gui = new ScoreLogGui(new ScoreLog(), board.getScore());
         gui.setVisible(true);
 

@@ -68,13 +68,9 @@ public class ScoreLogGui extends JFrame {
         });
 
         retryButton.addActionListener(e -> {
-            gameBoard board = new gameBoard();
-            board.setVisible(true);
             Game game = new Game();
             game.run();
-            dispose();
-
-
+            setVisible(false);
         });
 
         exitButton.addActionListener(e -> System.exit(0));
