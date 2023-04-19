@@ -1,11 +1,9 @@
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
 
 public class ScoreLog {
     private final List<Entry> entries;
@@ -46,13 +44,13 @@ public class ScoreLog {
             return name;
         }
 
-        public int getScore() {
-            return score;
-        }
-
         @Override
         public int compareTo(Entry other) {
             return Integer.compare(score, other.score);
+        }
+
+        public int getScore() {
+            return score;
         }
     }
 }

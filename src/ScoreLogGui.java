@@ -3,10 +3,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
+//reminder to add a button for retrying the game
 public class ScoreLogGui extends JFrame {
     private final ScoreLog leaderboard;
     private final JTextField nameField;
     private final JTextArea leaderboardArea;
+
 
     public ScoreLogGui (ScoreLog leaderboard) {
         this.leaderboard = leaderboard;
@@ -53,10 +55,12 @@ public class ScoreLogGui extends JFrame {
                         JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            int score = 0; // Replace this with the actual score from the game
+            gameBoard board = new gameBoard();
+            int score = board.getScore();
             leaderboard.addEntry(name, score);
             updateLeaderboard();
             nameField.setText("");
+
         });
 
         retryButton.addActionListener(e -> {

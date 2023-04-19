@@ -10,7 +10,7 @@ public class gameBoard extends JPanel {
     private int gridSize=36;
     private ArrayList<ArrayList<State>> grid=createGrid(gridSize);
 
-    private int score = 0;
+    private int score;
     private JLabel scoreLabel;
 
     private Food cookie;
@@ -41,13 +41,14 @@ public class gameBoard extends JPanel {
     }
 
     public void eat() {
+        ScoreLog scoreLog = new ScoreLog();
         if (snake.getBody().get(0).getX() == cookiePos && snake.getBody().get(0).getY() == cookiePos) {
             score++;
+            scoreLabel.setText("Score: " + score);
             snake.addSegment();
             cookiePos = randomCookieCords();
         }
     }
-
 
     public boolean checkFoodCondition() {
         boolean foodEaten = false;
@@ -55,8 +56,8 @@ public class gameBoard extends JPanel {
                 Segment segment = snake.getBody().get(i);
                 if ((cookiePos) == segment.getX() && (cookiePos) == segment.getY()) {
                     foodEaten = true;
-                }
             }
+        }
         return foodEaten;
     }
 
@@ -127,4 +128,10 @@ public class gameBoard extends JPanel {
         snake.draw(g);
         cookie.paintCookie(g, cookiePos);
     }
+
+
+    public int getScore() {
+        return score;
+    }
+
 }
