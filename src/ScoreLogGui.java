@@ -47,6 +47,7 @@ public class ScoreLogGui extends JFrame {
 
         add(mainPanel);
 
+
         updateLeaderboard();
 
         enterButton.addActionListener(e -> {
@@ -67,6 +68,12 @@ public class ScoreLogGui extends JFrame {
         });
 
         retryButton.addActionListener(e -> {
+            gameBoard board = new gameBoard();
+            board.setVisible(true);
+            Game game = new Game();
+            game.run();
+            dispose();
+
 
         });
 
