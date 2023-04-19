@@ -9,8 +9,7 @@ public class ScoreLogGui extends JFrame {
     private final JTextField nameField;
     private final JTextArea leaderboardArea;
     private final int score;
-
-    private gameBoard board;
+    private boolean scoring = true;
 
 
     public ScoreLogGui (ScoreLog leaderboard, int score) {
@@ -34,7 +33,7 @@ public class ScoreLogGui extends JFrame {
             plurality = " points!";
         }
 
-        JOptionPane.showMessageDialog(null, "You scored " + this.score + plurality + " Enter your name (one word, no spaces, no special characters) to add your score to the leaderboard.");
+        JOptionPane.showMessageDialog(null, "You scored " + this.score + plurality + " Your name (one word, no spaces) to add your score to the leaderboard.");
         JPanel inputPanel = new JPanel(new FlowLayout());
         JLabel nameLabel = new JLabel("Name:");
         nameField = new JTextField(20);
@@ -79,14 +78,14 @@ public class ScoreLogGui extends JFrame {
         });
 
         retryButton.addActionListener(e -> {
-            boolean lose = false;
-            board.reset();
-            gameBoard board = new gameBoard();
-            Game game = new Game();
-            game.run(lose, board);
+            scoring = false;
         });
 
         exitButton.addActionListener(e -> System.exit(0));
+    }
+
+    public boolean isDone() {
+        return scoring;
     }
 
     private void updateLeaderboard() {
@@ -100,7 +99,11 @@ public class ScoreLogGui extends JFrame {
         leaderboardArea.setText(sb.toString());
     }
 
-    public void setGameBoard(gameBoard board) {
-        this.board = board;
+    public void resetGame() {
+        // clear the name field
+        nameField.setText("");
+
+        // clear the leaderboard
+
     }
 }

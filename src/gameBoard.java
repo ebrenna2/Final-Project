@@ -115,6 +115,7 @@ public class gameBoard extends JPanel {
         grid.add(wallRow);
         return grid;
     }
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -124,15 +125,4 @@ public class gameBoard extends JPanel {
         g.setFont(new Font("Arial", Font.BOLD, 30));
         g.drawString("Score: " + score, 560, 30);
     }
-
-    public void reset() {
-        // reset the snake
-        snake = new Snake();
-        // reset the food
-        Food food = new Food();
-        // reset the score
-        score = 0;
-    }
-
-
 }
