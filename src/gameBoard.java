@@ -1,6 +1,8 @@
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class gameBoard extends JPanel {
 
@@ -10,6 +12,10 @@ public class gameBoard extends JPanel {
 
     private int score = 0;
     private JLabel scoreLabel;
+
+    private Food cookie;
+
+    private int cookiePos;
 
     gameBoard() {
         snake = new Snake();
@@ -25,11 +31,44 @@ public class gameBoard extends JPanel {
         scoreLabel.setFont(new Font("Arial", Font.BOLD, 30));
         scoreLabel.setHorizontalAlignment(SwingConstants.RIGHT);
         add(scoreLabel, BorderLayout.NORTH);
+
+        cookie = new Food();
+        cookiePos = 40;
+
     }
 
     public void move() {
         snake.move();
     }
+
+    public boolean checkFoodCondition() {
+        boolean foodEaten = false;
+            for (int i = 1; i < snake.getBody().size(); i++) {
+                Segment segment = snake.getBody().get(i);
+                if ((cookiePos) == segment.getX() && (cookiePos) != segment.getY()) {
+                    foodEaten = true;
+                }
+            }
+        return foodEaten;
+    }
+
+    public int randomCookieCords() {
+        Random random = new Random();
+        int randPos = 0;
+        boolean overlap = true;
+
+        while (overlap) {
+            randPos = random.nextInt(0, 37);
+            for (int i = 1; i < snake.getBody().size(); i++) {
+                Segment segment = snake.getBody().get(i);
+                if ((randPos*20) != segment.getX() && (randPos*20) != segment.getY()) {
+                    overlap = false;
+                }
+            }
+        }
+        return randPos*20;
+    }
+
 
     public boolean checkLoseCondition() {
         boolean lose = false;
@@ -78,5 +117,6 @@ public class gameBoard extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         snake.draw(g);
+        cookie.paintCookie(g, cookiePos);
     }
 }
