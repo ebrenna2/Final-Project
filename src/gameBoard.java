@@ -51,12 +51,12 @@ public class gameBoard extends JPanel {
 
     public boolean checkFoodCondition() {
         boolean foodEaten = false;
-            for (int i = 1; i < snake.getBody().size(); i++) {
-                Segment segment = snake.getBody().get(i);
-                if ((cookiePosX) == segment.getX() && (cookiePosY) == segment.getY()) {
-                    foodEaten = true;
-                }
+        for (int i = 1; i < snake.getBody().size(); i++) {
+            Segment segment = snake.getBody().get(i);
+            if ((cookiePosX) == segment.getX() && (cookiePosY) == segment.getY()) {
+                foodEaten = true;
             }
+        }
         return foodEaten;
     }
 

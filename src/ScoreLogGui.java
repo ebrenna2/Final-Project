@@ -12,6 +12,7 @@ public class ScoreLogGui extends JFrame {
 
 
     public ScoreLogGui (ScoreLog leaderboard, int score) {
+        JOptionPane.showMessageDialog(null, "Enter your name (one word, no spaces) to add your score to the leaderboard. \nPress retry to play again. \nPress exit to quit the game.", "Score Log Instructions", JOptionPane.INFORMATION_MESSAGE);
         this.leaderboard = leaderboard;
         //leaderboard.readEntries();
         this.score = score;
@@ -28,6 +29,7 @@ public class ScoreLogGui extends JFrame {
         inputPanel.add(nameLabel);
         inputPanel.add(nameField);
         inputPanel.add(enterButton);
+
 
         leaderboardArea = new JTextArea();
         leaderboardArea.setEditable(false);
@@ -65,7 +67,7 @@ public class ScoreLogGui extends JFrame {
         });
 
         retryButton.addActionListener(e -> {
-            // Replace this with code to restart the game
+
         });
 
         exitButton.addActionListener(e -> System.exit(0));
