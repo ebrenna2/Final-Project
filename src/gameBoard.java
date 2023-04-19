@@ -66,10 +66,10 @@ public class gameBoard extends JPanel {
         boolean overlap = true;
 
         while (overlap) {
-            randPos = random.nextInt(0, 37);
+            randPos = random.nextInt(0, 36);
             for (int i = 1; i < snake.getBody().size(); i++) {
                 Segment segment = snake.getBody().get(i);
-                if ((randPos*20) != segment.getX() && (randPos*20) != segment.getY()) {
+                if ((randPos*20) == segment.getX() && (randPos*20) == segment.getY()) {
                     overlap = false;
                 }
             }
