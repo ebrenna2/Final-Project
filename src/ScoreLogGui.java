@@ -18,7 +18,7 @@ public class ScoreLogGui extends JFrame {
         setTitle("Score Log");
         setSize(new Dimension(400, 400));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        leaderboard.readEntries();
         JPanel mainPanel = new JPanel(new BorderLayout());
 
         JPanel inputPanel = new JPanel(new FlowLayout());
