@@ -8,13 +8,8 @@ import java.util.Random;
 public class gameBoard extends JPanel {
 
     private Snake snake;
-    private int gridSize=36;
-    private ArrayList<ArrayList<State>> grid=createGrid(gridSize);
-
     private int score = 0;
-
     private Food cookie;
-
     private int cookiePosX;
     private int cookiePosY;
 
@@ -49,18 +44,6 @@ public class gameBoard extends JPanel {
         }
     }
 
-
-    public boolean checkFoodCondition() {
-        boolean foodEaten = false;
-        for (int i = 1; i < snake.getBody().size(); i++) {
-            Segment segment = snake.getBody().get(i);
-            if ((cookiePosX) == segment.getX() && (cookiePosY) == segment.getY()) {
-                foodEaten = true;
-            }
-        }
-        return foodEaten;
-    }
-
     public int randomCookieCords() {
         Random random = new Random();
         int randPos = 0;
@@ -78,7 +61,6 @@ public class gameBoard extends JPanel {
         return randPos*20;
     }
 
-
     public boolean checkLoseCondition() {
         boolean lose = false;
         Segment head = snake.getBody().get(0);
@@ -94,26 +76,6 @@ public class gameBoard extends JPanel {
             lose = true;
         }
         return lose;
-    }
-
-    public static ArrayList<ArrayList<State>> createGrid(int gridSize) {
-        ArrayList<ArrayList<State>> grid=new ArrayList<>();
-        ArrayList<State> wallRow=new ArrayList<>();
-        for (int i=0;i<gridSize;i++) {
-            wallRow.add(State.WALL);
-        }
-        ArrayList<State> emptyRow=new ArrayList<>();
-        emptyRow.add(State.WALL);
-        for (int i=0;i<gridSize;i++) {
-            emptyRow.add(State.EMPTY);
-        }
-        emptyRow.add(State.WALL);
-        grid.add(wallRow);
-        for (int i=0;i<gridSize;i++) {
-            grid.add(emptyRow);
-        }
-        grid.add(wallRow);
-        return grid;
     }
 
     @Override
