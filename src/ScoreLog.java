@@ -40,15 +40,29 @@ public class ScoreLog {
         try {
             fIn = new Scanner(new FileInputStream("leaderboard_log.txt")) ;
         } catch (FileNotFoundException e) {
-            System.out.println("File not found");
+            System.out.println("File not found... creating new file");
         }
-        while (fIn.hasNext()) {
-            String line = fIn.nextLine();
-            String[] splitLine = line.split(" ");
-            String name = splitLine[0];
-            int score = Integer.parseInt(splitLine[1]);
-            Entry entry = new Entry(name, score);
-            entries.add(entry);
+
+        try {
+            File logFile = new File("leaderboard_log.txt");
+            logFile.createNewFile();
+            fIn = new Scanner(logFile);
+        }
+
+        catch (IOException e) {
+            System.out.println("Error creating file");
+        }
+
+        if(fIn != null)
+        {
+            while (fIn.hasNext()) {
+                String line = fIn.nextLine();
+                String[] splitLine = line.split(" ");
+                String name = splitLine[0];
+                int score = Integer.parseInt(splitLine[1]);
+                Entry entry = new Entry(name, score);
+                entries.add(entry);
+            }
         }
         Collections.sort(entries, Collections.reverseOrder());
     }
