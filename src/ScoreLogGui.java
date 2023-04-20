@@ -15,7 +15,6 @@ public class ScoreLogGui extends JFrame {
     //constructor for the gui and how it will look/operates/how all the buttons work
     public ScoreLogGui (ScoreLog leaderboard, int score) {
         this.leaderboard = leaderboard;
-        //leaderboard.readEntries();
         this.score = score;
         setTitle("Score Log");
         setSize(new Dimension(400, 400));
@@ -102,13 +101,5 @@ public class ScoreLogGui extends JFrame {
             sb.append(String.format("\t%s\t%d\n", entry.getName(), entry.getScore()));
         }
         leaderboardArea.setText(sb.toString());
-    }
-
-    public void resetGame() {
-        // clear the name field
-        nameField.setText("");
-
-        // clear the leaderboard
-
     }
 }

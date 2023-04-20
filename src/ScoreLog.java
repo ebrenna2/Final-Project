@@ -41,17 +41,9 @@ public class ScoreLog {
             fIn = new Scanner(new FileInputStream("leaderboard_log.txt")) ;
         } catch (FileNotFoundException e) {
             System.out.println("File not found... creating new file");
-        }
-
-        try {
             File logFile = new File("leaderboard_log.txt");
-            logFile.createNewFile();
-            fIn = new Scanner(logFile);
         }
 
-        catch (IOException e) {
-            System.out.println("Error creating file");
-        }
 
         if(fIn != null)
         {
