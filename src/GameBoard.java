@@ -1,11 +1,10 @@
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Random;
 
 
-public class gameBoard extends JPanel {
+public class GameBoard extends JPanel {
 
     private Snake snake;
     private int score = 0;
@@ -14,10 +13,10 @@ public class gameBoard extends JPanel {
     private int cookiePosY;
 
     // sets up the GameBoard, Snake, and Cookie
-    gameBoard() {
+    GameBoard() {
         snake = new Snake();
         setBackground(Color.black);
-        setPreferredSize(new Dimension(580, 580));
+        setPreferredSize(new Dimension(560, 560));
         setLayout(new BorderLayout());
         add(snake);
         addKeyListener(snake);
@@ -52,7 +51,7 @@ public class gameBoard extends JPanel {
         boolean overlap = true;
 
         while (overlap) {
-            randPos = random.nextInt(0, 29);
+            randPos = random.nextInt(0, 28);
             for (int i = 1; i < snake.getBody().size(); i++) {
                 Segment segment = snake.getBody().get(i);
                 if ((randPos*20) != segment.getX() && (randPos*20) != segment.getY()) {
@@ -75,7 +74,7 @@ public class gameBoard extends JPanel {
                 lose = true;
             }
         }
-        if (head.getX() < 0 || head.getX() > 580 || head.getY() < 0 || head.getY() > 580) {
+        if (head.getX() < 0 || head.getX() > 550 || head.getY() < 0 || head.getY() > 550) {
             lose = true;
         }
         return lose;

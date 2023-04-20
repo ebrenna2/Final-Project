@@ -32,10 +32,12 @@ public class Segment {
         }
     }
 
+    // returns y coordinate
     public int getX() {
         return x;
     }
 
+    //returns x coordinate
     public int getY() {
         return y;
     }

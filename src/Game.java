@@ -13,9 +13,9 @@ public class Game {
         JFrame frame = new JFrame("Snake");
         JOptionPane.showMessageDialog(null, "Welcome to Snake! Use the arrow keys to move the snake. Eat the food to grow longer. Don't hit the walls or yourself!", "Welcome", JOptionPane.INFORMATION_MESSAGE);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(720, 720);
+        frame.setSize(560, 560);
         ScoreLogGui gui;
-        gameBoard board = new gameBoard();
+        GameBoard board = new GameBoard();
         frame.getContentPane().add(board);
         frame.pack();
         frame.setVisible(true);
@@ -47,7 +47,7 @@ public class Game {
             gui.setVisible(false);
             lose = false;
             frame.remove(board);
-            board = new gameBoard();
+            board = new GameBoard();
             frame.getContentPane().add(board);
         }
     }

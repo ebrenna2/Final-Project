@@ -17,7 +17,7 @@ public class Snake extends JComponent implements KeyListener {
     }
 
     public void addHead() {
-        Segment segment = new Segment(360, 360, true, Direction.DOWN);
+        Segment segment = new Segment(280, 280, true, Direction.DOWN);
         body.add(segment);
     }
 
