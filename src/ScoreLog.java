@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,6 +18,18 @@ public class ScoreLog {
 
     //adds the entry to the leaderboard, and formats how it's written out to the file (not in order, though just based on whoever played it (and the order they played it in).
     public void addEntry(String name, int score) {
+        try {
+            String trimmedName = name.trim();
+            if (trimmedName.isEmpty() || trimmedName.contains(" ") || trimmedName.matches(".*[\\s\\W\\d].*|.*\\s+.*"))
+            {
+                JOptionPane.showMessageDialog(null, "Name must be one word, no spaces or special characters", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+        }
+        catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(),"Name must be one word, no spaces or special characters", JOptionPane.ERROR_MESSAGE);
+        }
         Entry entry = new Entry(name, score);
         entries.add(entry);
         Collections.sort(entries, Collections.reverseOrder());
@@ -27,6 +40,7 @@ public class ScoreLog {
         } catch (IOException e) {
             System.out.println("Error writing to log file: " + e.getMessage());
         }
+
     }
 
     //gets the entries
@@ -48,10 +62,18 @@ public class ScoreLog {
         if(fIn != null)
         {
             while (fIn.hasNext()) {
+                int score;
                 String line = fIn.nextLine();
                 String[] splitLine = line.split(" ");
                 String name = splitLine[0];
-                int score = Integer.parseInt(splitLine[1]);
+                try {
+                    score = Integer.parseInt(splitLine[1]);
+                }
+                catch (NumberFormatException e)
+                {
+                    System.out.println("Invalid score in log file: " + splitLine[1]);
+                    continue;
+                }
                 Entry entry = new Entry(name, score);
                 entries.add(entry);
             }
