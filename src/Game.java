@@ -37,10 +37,13 @@ public class Game {
             scoring = true;
             gui = new ScoreLogGui(new ScoreLog(), board.getScore());
             gui.setVisible(true);
+
             // loop that checks if player is done scoring and wants to reset
             while (scoring) {
                 scoring = gui.isDone();
             }
+
+            // resets the game if player wants to continue
             gui.setVisible(false);
             lose = false;
             frame.remove(board);

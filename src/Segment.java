@@ -44,8 +44,11 @@ public class Segment {
     public void setDir(Direction d) {
         dir = d;
     }
+
+    // returns true if the segment is the head
     public boolean isHead() {
         return head;
     }
+
     public Direction getDir() { return this.dir; }
 }

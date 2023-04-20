@@ -13,6 +13,7 @@ public class gameBoard extends JPanel {
     private int cookiePosX;
     private int cookiePosY;
 
+    // sets up the GameBoard, Snake, and Cookie
     gameBoard() {
         snake = new Snake();
         setBackground(Color.black);
@@ -27,6 +28,7 @@ public class gameBoard extends JPanel {
         cookiePosY = 40;
     }
 
+    // returns the total score
     public int getScore() {
         return score;
     }
@@ -61,6 +63,7 @@ public class gameBoard extends JPanel {
         return randPos*20;
     }
 
+    // checks collision
     public boolean checkLoseCondition() {
         boolean lose = false;
         Segment head = snake.getBody().get(0);
@@ -78,6 +81,7 @@ public class gameBoard extends JPanel {
         return lose;
     }
 
+    // paints the snake, cookie, and score to the panel
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);

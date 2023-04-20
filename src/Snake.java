@@ -9,11 +9,10 @@ import java.util.ArrayList;
 public class Snake extends JComponent implements KeyListener {
 
     private ArrayList<Segment> body;
-    private int score;
 
+    // creates the snake object starting with the head segment
     Snake() {
         body = new ArrayList<>();
-        score = 0;
         addHead();
     }
 
@@ -60,6 +59,7 @@ public class Snake extends JComponent implements KeyListener {
         }
     }
 
+    // returns the body ArrayList with the Segment objects
     public ArrayList<Segment> getBody() {
         return body;
     }
