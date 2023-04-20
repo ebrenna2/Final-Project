@@ -1,5 +1,4 @@
-
-
+// Segment class defines the snake body segments
 public class Segment {
 
     private int x;
@@ -7,6 +6,7 @@ public class Segment {
     private boolean head;
     private Direction dir;
 
+    // creates a segment with an x and y coordinate, a head boolean, and a direction
     public Segment(int y, int x, boolean head, Direction dir) {
         this.x = x;
         this.y = y;
@@ -52,5 +52,6 @@ public class Segment {
         return head;
     }
 
+    // returns the direction of the segment
     public Direction getDir() { return this.dir; }
 }

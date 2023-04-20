@@ -1,11 +1,10 @@
-
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
+// Snake class defines a snake object with segments and controls
 public class Snake extends JComponent implements KeyListener {
 
     private ArrayList<Segment> body;
@@ -16,11 +15,13 @@ public class Snake extends JComponent implements KeyListener {
         addHead();
     }
 
+    // adds the head segment to the body
     public void addHead() {
         Segment segment = new Segment(280, 280, true, Direction.DOWN);
         body.add(segment);
     }
 
+    // adds a body segment to the body
     public void addSegment() {
         Direction in=body.get(this.body.size()-1).getDir();
         int newX=body.get(this.body.size()-1).getX();
@@ -37,6 +38,7 @@ public class Snake extends JComponent implements KeyListener {
         body.add(segment);
     }
 
+    // moves the segments in the body
     public void move() {
         Direction inh=body.get(0).getDir();
         for (int i=0;i<body.size();i++) {

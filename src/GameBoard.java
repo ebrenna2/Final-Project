@@ -1,9 +1,8 @@
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
-
+// GameBoard class displays the game and keeps track of score as well as collision
 public class GameBoard extends JPanel {
 
     private Snake snake;
@@ -32,10 +31,12 @@ public class GameBoard extends JPanel {
         return score;
     }
 
+    // calls the move method from snake
     public void move() {
         snake.move();
     }
 
+    // checks collision for cookie
     public void eat() {
         if (snake.getBody().get(0).getX() == cookiePosX && snake.getBody().get(0).getY() == cookiePosY) {
             score++;
@@ -45,6 +46,7 @@ public class GameBoard extends JPanel {
         }
     }
 
+    // sets new x and y coordinates for the cookie
     public int randomCookieCords() {
         Random random = new Random();
         int randPos = 0;
@@ -62,7 +64,7 @@ public class GameBoard extends JPanel {
         return randPos*20;
     }
 
-    // checks collision
+    // checks collision which ends the game
     public boolean checkLoseCondition() {
         boolean lose = false;
         Segment head = snake.getBody().get(0);

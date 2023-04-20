@@ -1,8 +1,6 @@
-//change the code a bit to make other classes so it works a bit better
-
 import javax.swing.*;
-import java.awt.*;
 
+// Game class is where the main method is defined which contains the game loop
 public class Game {
 
     private static boolean lose = false;
